@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贵州中烟项目技术中心欢迎页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #006400; /* 深绿色 */
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #006400;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #004d00;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+    <img src="../static/images/logo01.png" >
+    <img src="../static/images/logo03.png">
+</div>
+<div class="header">
+    <h1>欢迎来到贵州中烟项目技术中心</h1>
+</div>
+
+<div class="container">
+    <h1>贵州中烟项目简介</h1>
+    <p>
+        <p>欢迎来到贵州中烟项目。本项目致力于提高烟草生产的效率和质量。
+        利用最新的科技手段和管理方法，为客户提供优质的产品和服务。</p>
+        本项目由贵州中烟工业有限责任公司与昆明理工大学联合开发。
+    </p>
+    <div class="button-container">
+        <a href="/main/" class="button">进入主页</a>
+        <a href="/introduction/" class="button">项目介绍</a>
+    </div>
+</div>
+
+<div class="footer">
+    <p>贵州中烟工业有限责任公司 | 版权所有</p>
+</div>
+
+</body>
+</html>

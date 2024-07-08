@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+
+
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">部门信息</div>
+        <div style="margin-left: 5px">
+            <button type="button" class="btn btn-success"><a href="/depart/add/">添加数据</a></button>
+        </div>
+        <div class="panel-body">
+            <div class="bs-example" data-example-id="striped-table">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>部门名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for obj in department_info %}
+                    <tr>
+                        <th scope="row">{{ obj.id }}</th>
+                        <td>{{ obj.title }}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger"><a href="/depart/delete/?id={{ obj.id }}">删 除</a></button>
+                            <a href="/depart/edit/?id={{ obj.id }}" type="button" class="btn btn-primary" style="color: #0f0f0f">编 辑</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}{% endblock %}

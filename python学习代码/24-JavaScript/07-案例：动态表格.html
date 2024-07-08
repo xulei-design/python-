@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>年龄</th>
+    </tr>
+    </thead>
+    <tbody id="body">
+    <!--    script中生成-->
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    //数据通过网络请求获取
+    //添加多行
+    var dataList = [
+        {id: 1, name: "国志", age: 19},
+        {id: 2, name: "骄傲", age: 20},
+        {id: 3, name: "吱嘎", age: 22},
+        {id: 4, name: "好噶", age: 35},
+        {id: 5, name: "九八", age: 40},
+        {id: 6, name: "按八分", age: 56}
+    ]
+    for (var idx in dataList) {
+        var info = dataList[idx];
+        var tr = document.createElement("tr");
+        //取值
+        for (var key in info) {
+            var text = info[key];
+            //生成<td>，并将值写入<td>标签中
+            var td = document.createElement("td");  //生成td标签
+            td.innerText = text;  //让td标签中的内容为text
+            tr.appendChild(td); //每生成一个td标签，都要加入到tr中
+
+            var bodyTag = document.getElementById("body");
+            bodyTag.appendChild(tr);
+        }
+    }
+    // //添加一行
+    // var info = {id: 1, name: "国志", age: 19};
+    //
+    // //创建标签
+    // var tr = document.createElement("tr");
+    // //取值
+    // for (var key in info) {
+    //     var text = info[key];
+    //     //生成<td>，并将值写入<td>标签中
+    //     var td = document.createElement("td");  //生成td标签
+    //     td.innerText = text;  //让td标签中的内容为text
+    //     tr.appendChild(td); //每生成一个td标签，都要加入到tr中
+    //
+    //     var bodyTag = document.getElementById("body");
+    //     bodyTag.appendChild(tr);
+    // }
+    // console.log(tr);
+</script>
+</body>
+</html>

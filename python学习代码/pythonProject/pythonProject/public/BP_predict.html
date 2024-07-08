@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>BP神经网络预测</title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>BP神经网络预测</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input1">主秤后填充值:</label>
+                <input type="text" id="input1">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input2">含水率:</label>
+                <input type="text" id="input2">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input3">填充值cm3/g:</label>
+                <input type="text" id="input3">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input4">长丝:</label>
+                <input type="text" id="input4">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input5">中丝g:</label>
+                <input type="text" id="input5">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input6">短丝g:</label>
+                <input type="text" id="input6">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input7">碎丝g:</label>
+                <input type="text" id="input7">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input8">总重:</label>
+                <input type="text" id="input8">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input9">整丝率%:</label>
+                <input type="text" id="input9">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input10">碎丝率%:</label>
+                <input type="text" id="input10">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="input11">水分仪水分:</label>
+                <input type="text" id="input11">
+            </div>
+        </div>
+    </div>
+
+    <button onclick="predict()">预测</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    // 这里我们定义一个简单的BP神经网络模型
+    async function loadModel() {
+        const model = await tf.loadLayersModel('path_to_your_model/model.json');
+        return model;
+    }
+
+    async function predict() {
+        const inputs = [];
+        for (let i = 1; i <= 11; i++) {
+            const inputElement = document.getElementById(`input${i}`);
+            const inputValue = parseFloat(inputElement.value);
+            if (isNaN(inputValue)) {
+                document.getElementById('result').innerText = '请输入有效的数字';
+                return;
+            }
+            inputs.push(inputValue);
+        }
+
+        const model = await loadModel();
+
+        // 创建输入张量
+        const inputTensor = tf.tensor2d([inputs]);
+
+        // 使用模型进行预测
+        const prediction = model.predict(inputTensor);
+
+        // 处理预测结果
+        prediction.data().then(pred => {
+            document.getElementById('result').innerText = `预测结果: ${pred[0].toFixed(2)}`;
+        });
+    }
+</script>
+
+</body>
+</html>

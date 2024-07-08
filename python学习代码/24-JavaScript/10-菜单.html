@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .menu{
+      width: 200px;
+      height: 800px;
+      border: 1px solid red;
+    }
+
+    .menu  .header{
+      background-color: gold;
+      padding: 10px 5px;
+      border-bottom: 1px dotted #dddddd;
+
+      cursor: pointer;
+      /*//鼠标放上去变成小手*/
+    }
+    .menu .content a{
+      display: block;
+      padding: 5px 5px;
+      border-bottom: 1px dotted #dddddd;
+    }
+    .hinder{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <div class="item">
+      <div class="header" onclick="clickMe(this);">上海</div>
+      <div class="content hinder">
+        <a href="">宝山区</a>
+        <a href="">青浦区</a>
+        <a href="">浦东区</a>
+      </div>
+    </div>
+
+
+    <div class="item">
+      <div class="header" onclick="clickMe(this)">北京</div>
+      <div class="content hinder">
+        <a href="">东城区</a>
+        <a href="">西城区</a>
+        <a href="">丰台区</a>
+      </div>
+    </div>
+
+     <div class="item">
+      <div class="header" onclick="clickMe(this);">上海2</div>
+      <div class="content hinder">
+        <a href="">宝山区</a>
+        <a href="">青浦区</a>
+        <a href="">浦东区</a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="header" onclick="clickMe(this)">北京2</div>
+      <div class="content hinder">
+        <a href="">东城区</a>
+        <a href="">西城区</a>
+        <a href="">丰台区</a>
+      </div>
+    <div>
+  </div>
+
+
+
+
+
+
+  <script src="static/plugins/jQuery/jQuery.js"></script>
+  <script>
+
+    // 这个函数实现双击就隐藏
+    function clickMe(self){
+      //让自己下面的功能显示出来
+      $(self).next().removeClass("hinder");
+      //找父亲,父亲所有的兄弟,再去每个兄弟的子孙中寻找class=content 添加hinder样式
+      $(self).parent().siblings().find(".content").addClass("hinder");
+
+    }
+  </script>
+</body>
+</html>

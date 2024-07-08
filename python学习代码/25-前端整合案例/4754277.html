@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Improved Layout</title>
+    <link rel="stylesheet" href="static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+    <link rel="stylesheet" href="static/plugins/font-awesome-4.7.0/css/font-awesome.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+
+        .sidebar {
+            border-right: 1px solid #ddd;
+            height: 100%;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .menu {
+            border: none;
+        }
+
+        .menu .header {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu .header:hover {
+            background-color: #495057;
+        }
+
+        .menu .content a {
+            display: block;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .menu .content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .hinder {
+            display: none;
+        }
+
+        .content-container {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 sidebar">
+            <div class="menu">
+                <div class="item">
+                    <div class="header" onclick="clickMe(this);">上海</div>
+                    <div class="content hinder">
+                        <a href="#">宝山区</a>
+                        <a href="#">青浦区</a>
+                        <a href="#">浦东区</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="header" onclick="clickMe(this);">北京</div>
+                    <div class="content hinder">
+                        <a href="#">东城区</a>
+                        <a href="#">西城区</a>
+                        <a href="#">丰台区</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="header" onclick="clickMe(this);">上海2</div>
+                    <div class="content hinder">
+                        <a href="#">宝山区</a>
+                        <a href="#">青浦区</a>
+                        <a href="#">浦东区</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="header" onclick="clickMe(this);">北京2</div>
+                    <div class="content hinder">
+                        <a href="#">东城区</a>
+                        <a href="#">西城区</a>
+                        <a href="#">丰台区</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">贵州中烟项目</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                   aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">注册</a></li>
+                            <li><a href="#">登录</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                   aria-expanded="false">许磊 <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">个人资料</a></li>
+                                    <li><a href="#">我的账号</a></li>
+                                    <li><a href="#">修改密码</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">注销</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="content-container">
+                <!-- Main content area -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="static/js/jQuery.js"></script>
+<script src="static/plugins/bootstrap-3.4.1/js/bootstrap.js"></script>
+<script>
+    function clickMe(self) {
+        $(self).next().toggleClass("hinder");
+        $(self).parent().siblings().find(".content").addClass("hinder");
+    }
+</script>
+</body>
+</html>

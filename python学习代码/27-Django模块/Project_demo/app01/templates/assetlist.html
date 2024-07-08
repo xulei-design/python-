@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">资产信息</div>
+        <div style="margin-left: 5px">
+            <a href="/asset/add/" type="button" class="btn btn-success" >添加数据</a>
+        </div>
+        <div class="panel-body">
+            <div class="bs-example" data-example-id="striped-table">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>名称</th>
+                        <th>价格</th>
+                        <th>种类</th>
+{#                        外键#}
+                        <th>所属部门</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for obj in assetinfo %}
+                    <tr>
+                        <th scope="row">{{ obj.id }}</th>
+                        <td>{{ obj.name }}</td>
+                        <td>{{ obj.price }}</td>
+                        <td>{{ obj.get_category_display }}</td>
+                        <td>{{ obj.depart.title }}</td>
+                        <td>
+                            <a href="/asset/{{ obj.id }}/delete/"  class="btn btn-danger">删除</a>
+                            <a href="/asset/edit/?aid={{ obj.id }}"  class="btn btn-primary">编辑</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="/app01/static/images/OIP-C.jfif" alt="">
+    <h1>index请求页面</h1>
+    <h3>展示变量</h3>
+    <div>{{ v1 }}</div>
+    <h3>展示数组</h3>
+    <ul>
+        {% for item in v2 %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <h3>展示字典</h3>
+    <ul>
+        <li>{{ v3.name }}</li>
+        <li>{{ v3.age }}</li>
+        <li>{{ v3.email }}</li>
+    </ul>
+    <h3>循环展示字典</h3>
+    <ul>
+    <h4>展示字典的键</h4>
+        {% for data in v3.keys %}
+        <li>{{ data }}</li>
+        {% endfor %}
+    </ul>
+    <ul>
+    <h4>展示字典的值</h4>
+        {% for e in v3.values %}
+        <li>{{ e }}</li>
+        {% endfor %}
+    </ul>
+    <ul>
+        <h4>展示键值对</h4>
+        {% for k,v in v3.items %}
+        <li>{{ k }} : {{ v }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卷烟生产掺配物料特性与成品卷烟质量指标的预测模型研究</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+        .logo-container {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-container img {
+            height: 50px;
+        }
+        .logo-container .logout {
+            background-color: #006400;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .logo-container .logout:hover {
+            background-color: #004d00;
+        }
+        .header {
+            background: #006400; /* 深绿色 */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 1.8em;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            line-height: 1.6;
+            color: #666;
+            font-size: 1em;
+        }
+        .section {
+            margin: 20px 0;
+        }
+        .team {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .team-member {
+            background: #f5f5f5;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            text-align: center;
+            max-width: 300px;
+        }
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .team-member h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .team-member p {
+            font-size: 1em;
+            color: #666;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: white;
+            margin-top: 20px;
+        }
+         </style>
+</head>
+<body>
+    <div class="logo-container">
+        <span>
+            <img src="../../../28-GuiyanProject/guiyan_project/myapp/static/images/logo01.png" alt="Logo">
+            <img src="../../../28-GuiyanProject/guiyan_project/myapp/static/images/logo03.png" alt="Logo">
+        </span>
+
+        <button class="logout" onclick="window.location.href='welcome.html'">退出</button>
+    </div>
+    <header class="header">
+        <h1>卷烟生产掺配物料特性与成品卷烟质量指标的预测模型研究</h1>
+    </header>
+    <div class="container">
+        <section class="section">
+            <h2>项目背景</h2>
+            <p>  掺配物料作为卷烟叶组配方的重要组成部分，是调节卷烟化学指标、主流烟气指标、叶丝物理指标（填充值等）和感官质量的重要组成部分。精准施加掺配物料，对卷烟产品配方的精准实现和卷烟产品质量控制、质量稳定具有重要意义。</p>
+        </section>
+        <section class="section">
+            <h2>研究目标</h2>
+            <p>  通过机器学习模型，预测掺配物料的组成及其对卷烟配方性能的影响，从而优化卷烟配方，减少实验成本，提高生产效率。</p>
+        </section>
+        <section class="section">
+            <h2>主要内容</h2>
+            <p>  本项目结合贵州中烟技术中心的实际情况，将掺配物料烟丝结构的物理特性指标具体分为11项，分别是：主秤后填充值 cm³/g、含水率%、填充值 cm³/g、长丝 g、中丝 g、短丝 g、碎丝 g、总重、整丝率%、碎丝率%、水分仪水分。成品卷烟的质量指标包括重量、长度、圆周、硬度、抽吸口数、水分、端部落丝量、含末率、总粒相物以及卷烟的3项烟气指标：CO、焦油、烟气烟碱。</p>
+        </section>
+        <section class="section">
+            <h2>研究方法</h2>
+            <p>  采用机器学习和人工智能技术，通过对现有数据的训练和优化，建立预测模型，减少实验过程中的成本和时间。</p>
+        </section>
+        <section class="section">
+            <h2>项目团队</h2>
+            <div class="team">
+                <div class="team-member">
+                    <img src="../static/image/更换贵烟.jpg" alt="贵州中烟项目组">
+                    <h3>贵州中烟项目组</h3>
+                    <p>提供卷烟配方和质量指标的专业知识。</p>
+                </div>
+                <div class="team-member">
+                    <img src="../../../28-GuiyanProject/guiyan_project/myapp/static/images/教授.webp" alt="车文刚教授">
+                    <h3>车文刚教授</h3>
+                    <p>项目负责人，负责整体项目的协调和管理。</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="车文刚教授实验室在读研究生">
+                    <h3>车文刚教授实验室在读研究生</h3>
+                    <p>负责数据分析和模型构建。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p style="color: white;">© 2024 贵州中烟技术中心 & 昆明理工大学信息工程与自动化学院</p>
+    </footer>
+</body>
+</html>

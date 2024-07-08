@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>综合管理系统</title>
+    <link rel="stylesheet" href="../static/CSS/管理系统.css">
+</head>
+<body>
+    <header>
+        <h1>综合管理系统</h1>
+        <nav>
+            <ul>
+                <li><a href="#dashboard">仪表盘</a></li>
+                <li><a href="#users">用户管理</a></li>
+                <li><a href="#reports">报告管理</a></li>
+                <li><a href="#settings">设置</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="dashboard">
+            <h2>仪表盘</h2>
+            <!-- 仪表盘内容 -->
+        </section>
+        <section id="users">
+            <h2>用户管理</h2>
+            <button onclick="showAddUserForm()">添加用户</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>用户名</th>
+                        <th>邮箱</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 用户列表 -->
+                </tbody>
+            </table>
+            <div id="addUserForm" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAddUserForm()">&times;</span>
+                    <form>
+                        <label for="username">用户名:</label>
+                        <input type="text" id="username" name="username">
+                        <label for="email">邮箱:</label>
+                        <input type="email" id="email" name="email">
+                        <button type="submit">添加</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section id="reports">
+            <h2>报告管理</h2>
+            <!-- 报告管理内容 -->
+        </section>
+        <section id="settings">
+            <h2>设置</h2>
+            <!-- 设置内容 -->
+        </section>
+    </main>
+    <script src="../static/js/管理系统.js"></script>
+</body>
+</html>

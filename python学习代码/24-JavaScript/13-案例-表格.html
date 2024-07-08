@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <table border="1">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>姓名</th>
+      <th>年龄</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>许磊</td>
+      <td>19</td>
+      <td>
+        <input type="button" value="删除" class="delect">
+      </td>
+    </tr>
+
+    <tr>
+      <td>2</td>
+      <td>许磊</td>
+      <td>19</td>
+      <td>
+        <input type="button" value="删除" class="delect">
+      </td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>许磊</td>
+      <td>19</td>
+      <td>
+        <input type="button" value="删除" class="delect">
+      </td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>许磊</td>
+      <td>19</td>
+      <td>
+        <input type="button" value="删除" class="delect">
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+  <script src="static/plugins/jQuery/jQuery.js"></script>
+  <script>
+    $(function (){
+      //找到所有的`class=delect的标签,绑定事件
+      $(".delect").click(function (){
+        //删除当前行的数据
+      $(this).parent().parent().remove();
+    });
+    })
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="container">
+    <h1>用户列表</h1>
+    </div>
+    <div class="bs-example" data-example-id="bordered-table">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for obj in datalist %}
+                <tr>
+                    <th scope="row">{{ obj.id }}</th>
+                    <td>{{ obj.username }}</td>
+                    <td>{{ obj.password }}</td>
+                    <td>{{ obj.age }}</td>
+                    <td>
+                    <a href="/user/delete/?uid={{ obj.id }}" class="btn btn-danger btn-xs">删除</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

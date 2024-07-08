@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .con{
+            background-color: green;
+        }
+        .clearfix:after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .con .item{
+            width: 100px;
+            height: 200px;
+            border: 1px solid red;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+  <div class="con clearfix">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+  </div>
+  <div class="con clearfix">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+  </div>
+</body>
+</html>

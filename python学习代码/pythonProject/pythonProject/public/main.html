@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+    <style>
+        .navbar {
+            border-radius: 0;
+        }
+        .logo-container {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div class="logo-container">
+        <span>
+            <img src="../../../28-GuiyanProject/guiyan_project/myapp/static/images/logo01.png" alt="Logo">
+            <img src="../../../28-GuiyanProject/guiyan_project/myapp/static/images/logo03.png" alt="Logo">
+        </span>
+
+    <button class="logout" onclick="window.location.href='welcome.html'">退出</button>
+</div>
+<div class="navbar navbar-default color">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">贵州中烟项目</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="http://localhost:3006/#">数据透视 <span class="sr-only">(current)</span></a>
+                </li>
+                <li><a href="#">关联数据分析</a></li>
+                <li><a href="http://localhost:63342/%E8%B4%B5%E7%83%9F/public/BP_predict.html?_ijt=er208d4hqprqn4rf36hne2scd0&_ij_reload=RELOAD_ON_SAVE">BP神经网络的预测</a></li>
+                <li><a href="#">XGBoost预测</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">注册</a></li>
+                <li><a href="#">登录</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">用户<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">个人资料</a></li>
+                        <li><a href="#">我的账号</a></li>
+                        <li><a href="#">修改密码</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<script src="../static/js/jQuery.js"></script>
+<script src="../static/plugins/bootstrap-3.4.1/js/bootstrap.js"></script>
+</body>
+</html>

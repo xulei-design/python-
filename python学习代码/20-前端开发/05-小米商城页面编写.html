@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小米商城上端页面</title>
+    <style>
+        body{
+            margin: 0;
+        }
+      .header{
+        height: 40px;
+        background-color: black;
+        color: #b0b0b0;
+        font-size: 12px;
+        line-height: 40px; #居中显示
+      }
+      .header .container{
+          width: 1226px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      .header .left{
+          float: left;
+      }
+      .header .right{
+          float: right;
+      }
+     .header .left .menu{
+            padding-left: 25px;
+            padding-right: 25px;
+            display: inline-block;
+            color: #b0b0b0; /* 改变a标签的字体颜色*/
+            text-decoration: none; /*#去除a标签的下划线*/
+             }
+     .header .left .menu:hover{
+         color: red;
+     }
+     .header .right .rmenu{
+         padding-right: 25px;
+         padding-left: 25px;
+         display: inline-block;
+     }
+    </style>
+</head>
+<body>
+  <div class="header">
+    <div class="container">
+        <div class="left">
+            <a class="menu" style="padding-left: 0" href="https://www.mi.com/shop">小米官网</a>
+            <a class="menu" href="https://www.mi.com/shop">小米商城</a>
+            <a class="menu" href="https://www.mi.com/shop">小米澎湃OS</a>
+            <a class="menu">小米汽车</a>
+            <a class="menu">小米影像</a>
+            <a class="menu">云服务</a>
+            <a class="menu">loT</a>
+            <a class="menu">有品</a>
+            <a class="menu">小爱开放平台</a>
+        </div>
+        <div class="right">
+            <a class="rmenu">登录</a>
+            <a class="rmenu" style="padding-right: 0">注册</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+  </div>
+</body>
+</html>

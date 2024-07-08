@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人网页 - 烟丝结构数据展示</title>
+    <!--<link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1/css/bootstrap.css">-->
+    <link rel="stylesheet" href="../static/js/html.js">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .navbar button {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .navbar button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto; /* 添加水平滚动条 */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+            box-sizing: border-box; /* 确保padding和border包含在宽度和高度内 */
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        thead {
+            display: table-header-group; /* 确保表头一直显示 */
+        }
+
+        tbody {
+            display: table-row-group;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 400px;
+        }
+
+        .statistics {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .pagination button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .pagination input {
+            width: 50px;
+            text-align: center;
+            margin: 0 5px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .chart-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .logout {
+            background-color: #006400;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .chart-buttons button {
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .chart-buttons button:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <button onclick="showModal(3)">主秤后填充值 cm3/g</button>
+    <button onclick="showModal(4)">含水率%</button>
+    <button onclick="showModal(5)">填充值cm3/g</button>
+    <button onclick="showModal(6)">长丝g</button>
+    <button onclick="showModal(7)">中丝g</button>
+    <button onclick="showModal(8)">短丝g</button>
+    <button onclick="showModal(9)">碎丝g</button>
+    <button onclick="showModal(10)">总重</button>
+    <button onclick="showModal(11)">整丝率%</button>
+    <button onclick="showModal(12)">碎丝率%</button>
+    <button onclick="showModal(13)">水分仪水分</button>
+
+    <button class="logout" onclick="window.location.href='http://localhost:63342/%E8%B4%B5%E7%83%9F/public/main.html?_ijt=v2lo20lb2h3oai87vc0sfmiji4&_ij_reload=RELOAD_ON_SAVE#'">退出</button>
+</div>
+
+<div class="content">
+    <h2>烟丝结构数据展示</h2>
+    <label for="tableSelect"></label>
+    <select id="tableSelect" onchange="loadTableData()">
+    </select>
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>牌号</th>
+                <th>批次号</th>
+                <th>主秤后填充值 cm3/g</th>
+                <th>含水率%</th>
+                <th>填充值cm3/g</th>
+                <th>长丝g</th>
+                <th>中丝g</th>
+                <th>短丝g</th>
+                <th>碎丝g</th>
+                <th>总重</th>
+                <th>整丝率%</th>
+                <th>碎丝率%</th>
+                <th>水分仪水分</th>
+            </tr>
+            </thead>
+            <tbody id="dataTableBody">
+            <!-- 数据行将在这里生成 -->
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <button onclick="prevPage()">上一页</button>
+        <input type="number" id="pageInput" value="1" min="1" onchange="jumpToPage()">
+        <button onclick="nextPage()">下一页</button>
+        <span id="totalRows"></span>
+    </div>
+</div>
+
+<!-- 图表 Modal -->
+<div id="chartModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('chartModal')">&times;</span>
+        <h2 id="modalTitle">图表</h2>
+        <div class="chart-buttons">
+            <button onclick="drawChart('scatter')">散点图</button>
+            <button onclick="drawChart('line')">折线图</button>
+            <button onclick="drawChart('bar')">柱状图</button>
+<!--            <button onclick="drawChart('pie')">饼状图</button>-->
+        </div>
+        <div class="chart-container">
+            <canvas id="chartCanvas"></canvas>
+        </div>
+        <div class="statistics" id="statistics"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('/api/tables')
+            .then(response => response.json())
+            .then(tables => {
+                const tableSelect = document.getElementById('tableSelect');
+                tables.forEach(table => {
+                    const option = document.createElement('option');
+                    option.value = table;
+                    option.textContent = table;
+                    tableSelect.appendChild(option);
+                });
+                loadTableData();
+            })
+            .catch(error => console.error('Error fetching tables:', error));
+    });
+
+    let currentPage = 1;
+    const rowsPerPage = 10;
+    let totalRows = 0;
+
+    function loadTableData() {
+        const tableName = document.getElementById('tableSelect').value;
+        fetch(`/api/data/${tableName}?page=${currentPage}&limit=${rowsPerPage}`)
+            .then(response => response.json())
+            .then(data => {
+                totalRows = data.total;
+                populateTable(data.results);
+                document.getElementById('totalRows').textContent = `总数据条数: ${totalRows}`;
+                window.rawData = data.allData; // 存储所有数据以便在绘图时使用
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    function populateTable(data) {
+        const dataTableBody = document.getElementById("dataTableBody");
+        dataTableBody.innerHTML = ''; // 清空表格内容
+        data.forEach((row) => {
+            const tr = document.createElement("tr");
+            for (const key in row) {
+                const td = document.createElement("td");
+                td.textContent = row[key];
+                tr.appendChild(td);
+            }
+            dataTableBody.appendChild(tr);
+        });
+        document.getElementById("pageInput").max = Math.ceil(totalRows / rowsPerPage);
+    }
+
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            loadTableData();
+        }
+    }
+
+    function nextPage() {
+        if (currentPage * rowsPerPage < totalRows) {
+            currentPage++;
+            loadTableData();
+        }
+    }
+
+    function jumpToPage() {
+        const pageInput = document.getElementById("pageInput");
+        const newPage = parseInt(pageInput.value);
+        if (newPage >= 1 && newPage <= Math.ceil(totalRows / rowsPerPage)) {
+            currentPage = newPage;
+            loadTableData();
+        }
+    }
+
+    let chartInstance = null;
+    let chartColumnIndex = null;
+
+    function showModal(colIndex) {
+        chartColumnIndex = colIndex;  // 减去1，因为我们要忽略序号列
+        const columnNames = [
+            "序号", "牌号", "批次号", "主秤后填充值 cm3/g", "含水率%", "填充值cm3/g", "长丝g", "中丝g", "短丝g", "碎丝g", "总重", "整丝率%", "碎丝率%", "水分仪水分"
+        ];
+        document.getElementById("modalTitle").textContent = columnNames[colIndex] + " 图表";
+        drawChart('scatter'); // 默认显示散点图
+        document.getElementById('chartModal').style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = "none";
+        }
+    }
+
+    function drawChart(type) {
+        const values = window.rawData.map(row => parseFloat(row[Object.keys(row)[chartColumnIndex]]));
+        const labels = values.map((_, index) => index + 1);
+
+        const ctx = document.getElementById('chartCanvas').getContext('2d');
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+
+        const minValue = Math.min(...values);
+        const maxValue = Math.max(...values);
+
+        const chartConfig = {
+            type: type,
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: document.getElementById("modalTitle").textContent,
+                    data: values,
+                    backgroundColor: type === 'pie' ? values.map(() => `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.6)`) : 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: type === 'line' ? false : true
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: '序号'
+                        }
+                    },
+                    y: {
+                        min: minValue - (maxValue - minValue) * 0.1, // 在最小值和最大值之间留一些间距
+                        max: maxValue + (maxValue - minValue) * 0.1, // 同上
+                        title: {
+                            display: true,
+                            text: '数值'
+                        }
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        };
+
+        if (type === 'scatter') {
+            chartConfig.data.datasets[0].data = values.map((value, index) => ({ x: index + 1, y: value }));
+            chartConfig.options.scales.x.type = 'linear';
+        }
+
+        chartInstance = new Chart(ctx, chartConfig);
+
+        const statistics = `
+            <div> 方差: ${calculateVariance(values).toFixed(2)} </div>
+            <div> 均值: ${calculateMean(values).toFixed(2)} </div>
+            <div> 标准差: ${calculateStdDev(values).toFixed(2)} </div>
+            <div> 中位数: ${calculateMedian(values).toFixed(2)} </div>
+        `;
+        document.getElementById("statistics").innerHTML = statistics;
+    }
+
+    function calculateVariance(values) {
+        const mean = calculateMean(values);
+        const squaredDiffs = values.map(value => Math.pow(value - mean, 2));
+        return calculateMean(squaredDiffs);
+    }
+
+    function calculateMean(values) {
+        const sum = values.reduce((acc, value) => acc + value, 0);
+        return sum / values.length;
+    }
+
+    function calculateStdDev(values) {
+        return Math.sqrt(calculateVariance(values));
+    }
+
+    function calculateMedian(values) {
+        values.sort((a, b) => a - b);
+        const half = Math.floor(values.length / 2);
+        if (values.length % 2 === 0) {
+            return (values[half - 1] + values[half]) / 2.0;
+        } else {
+            return values[half];
+        }
+    }
+</script>
+</body>
+</html>
